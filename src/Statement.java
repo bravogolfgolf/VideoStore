@@ -2,14 +2,14 @@
 import java.util.Vector;
 import java.util.Enumeration;
 
-class Customer {
+class Statement {
 
     private String name;
     private Vector rentals = new Vector();
     private double totalAmount;
     private int frequentRenterPoints;
 
-    Customer(String name) {
+    Statement(String name) {
         this.name = name;
     }
 
@@ -22,7 +22,7 @@ class Customer {
     }
 
 
-    String statement() {
+    String generate() {
         totalAmount = 0;
         frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
