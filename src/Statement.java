@@ -1,33 +1,41 @@
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 class Statement {
 
-    private String name;
+    private String customerName;
     private List<Rental> rentals = new ArrayList<>();
     private double totalAmount;
     private int frequentRenterPoints;
 
-    Statement(String name) {
-        this.name = name;
+    Statement(String customerName) {
+        this.customerName = customerName;
     }
 
     void addRental(Rental rental) {
         rentals.add(rental);
     }
 
-    String getName() {
-        return name;
+    String generate() {
+        clearTotals();
+        String statementText = header();
+        statementText += rentalLines();
+        statementText += footer();
+        return statementText;
     }
 
-
-    String generate() {
+    private void clearTotals() {
         totalAmount = 0;
         frequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "\n";
+    }
 
+    private String header() {
+        return String.format("Rental Record for %s\n", customerName);
+    }
+
+    private String rentalLines() {
+        String rentalLines = "";
         for (Rental rental : rentals) {
             double thisAmount = 0;
 
@@ -54,17 +62,16 @@ class Statement {
                     && rental.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            result += "\t" + rental.getMovie().getTitle() + "\t"
+            rentalLines += "\t" + rental.getMovie().getTitle() + "\t"
                     + String.valueOf(thisAmount) + "\n";
             totalAmount += thisAmount;
 
         }
+        return rentalLines;
+    }
 
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
-
-
-        return result;
+    private String footer() {
+        return String.format("You owed %.1f\nYou earned %d frequent renter points\n", totalAmount, frequentRenterPoints);
     }
 
     double getTotal() {
