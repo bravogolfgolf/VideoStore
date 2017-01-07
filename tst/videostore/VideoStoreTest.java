@@ -1,5 +1,8 @@
+package videostore;
+
 import org.junit.Before;
 import org.junit.Test;
+import videostore.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,12 +20,12 @@ public class VideoStoreTest {
     @Before
     public void setUp() {
         statement = new Statement("Customer");
-        newRelease1 = new Movie("New Release 1", Movie.NEW_RELEASE);
-        newRelease2 = new Movie("New Release 2", Movie.NEW_RELEASE);
-        childrens = new Movie("Childrens", Movie.CHILDRENS);
-        regular1 = new Movie("Regular 1", Movie.REGULAR);
-        regular2 = new Movie("Regular 2", Movie.REGULAR);
-        release3 = new Movie("Regular 3", Movie.REGULAR);
+        newRelease1 = new NewReleaseMovie("New Release 1");
+        newRelease2 = new NewReleaseMovie("New Release 2");
+        childrens = new ChildrensMovie("Childrens");
+        regular1 = new RegularMovie("Regular 1");
+        regular2 = new RegularMovie("Regular 2");
+        release3 = new RegularMovie("Regular 3");
     }
 
     @Test
