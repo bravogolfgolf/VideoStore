@@ -1,9 +1,7 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
 class Statement {
-
     private String customerName;
     private List<Rental> rentals = new ArrayList<>();
     private double totalAmount;
@@ -15,6 +13,14 @@ class Statement {
 
     void addRental(Rental rental) {
         rentals.add(rental);
+    }
+
+    double getTotal() {
+        return totalAmount;
+    }
+
+    int getFrequentRenterPoints() {
+        return frequentRenterPoints;
     }
 
     String generate() {
@@ -49,18 +55,10 @@ class Statement {
     }
 
     private String formatRentalLine(Rental rental, double rentalAmount) {
-        return String.format("\t%s\t%.1f\n", rental.getMovie().getTitle(), rentalAmount);
+        return String.format("\t%s\t%.1f\n", rental.getTitle(), rentalAmount);
     }
 
     private String footer() {
         return String.format("You owed %.1f\nYou earned %d frequent renter points\n", totalAmount, frequentRenterPoints);
-    }
-
-    double getTotal() {
-        return totalAmount;
-    }
-
-    int getFrequentRenterPoints() {
-        return frequentRenterPoints;
     }
 }

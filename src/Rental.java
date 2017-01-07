@@ -1,16 +1,10 @@
+class Rental {
+    private Movie movie;
+    private int daysRented;
 
- class Rental
-{
-	private Movie movie;
-	private int daysRented;
-
-	 Rental (Movie movie, int daysRented) {
-		this.movie 		= movie;
-		this.daysRented = daysRented;
-	}
-
-    Movie getMovie() {
-        return movie;
+    Rental(Movie movie, int daysRented) {
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
 
     double determineRentalAmount() {
@@ -21,4 +15,7 @@
         return movie.determineFrequentRenterPoints(daysRented);
     }
 
+    String getTitle() {
+        return movie.getTitle();
+    }
 }

@@ -1,4 +1,3 @@
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,7 +57,6 @@ public class VideoStoreTest {
         statement.addRental(new Rental(regular1, 1));
         statement.addRental(new Rental(regular2, 2));
         statement.addRental(new Rental(release3, 3));
-
         statement.generate();
         assertEquals(7.5, statement.getTotal(), DELTA);
         assertEquals(3, statement.getFrequentRenterPoints());
@@ -69,7 +67,6 @@ public class VideoStoreTest {
         statement.addRental(new Rental(regular1, 1));
         statement.addRental(new Rental(regular2, 2));
         statement.addRental(new Rental(release3, 3));
-
         assertEquals("Rental Record for Customer\n" +
                         "\tRegular 1\t2.0\n" +
                         "\tRegular 2\t2.0\n" +
